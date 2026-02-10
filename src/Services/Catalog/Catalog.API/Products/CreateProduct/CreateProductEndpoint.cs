@@ -15,7 +15,7 @@ public class CreateProductEndpoint : ICarterModule
     {
         app.MapPost("/products", async (CreateProductRequest request, ISender sender) =>
         {
-            var command = request.Adapt<CreateProductRequest>();
+            var command = request.Adapt<CreateProductCommand>();
             var result = await sender.Send(command);
             var response = result.Adapt<CreateProductResponse>();
             return Results.Created($"/products/{response.Id}", response);
