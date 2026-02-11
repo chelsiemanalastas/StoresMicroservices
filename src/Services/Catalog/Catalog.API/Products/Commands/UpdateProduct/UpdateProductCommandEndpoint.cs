@@ -14,7 +14,7 @@ public class UpdateProductCommandEndpoint : ICarterModule
     {
         app.MapPut("/products", async (UpdateProductCommandRequest request, ISender sender) =>
         {
-            var command = request.Adapt<UpdateProductCommandRequest>();
+            var command = request.Adapt<UpdateProductCommand>();
             var result = await sender.Send(command);
             var response = result.Adapt<UpdateProductCommandResponse>();
             return Results.Ok(response);
