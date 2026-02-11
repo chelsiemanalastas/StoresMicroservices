@@ -1,4 +1,4 @@
-﻿namespace Catalog.API.Products.CreateProduct;
+﻿namespace Catalog.API.Products.Command.CreateProduct;
 
 public record CreateProductRequest(
     string Name,
@@ -9,7 +9,7 @@ public record CreateProductRequest(
 
 public record CreateProductResponse(Guid Id);
 
-public class CreateProductEndpoint : ICarterModule
+public class CreateProductCommandEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
