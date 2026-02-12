@@ -9,8 +9,7 @@ public class DeleteProducCommandEndpoint : ICarterModule
     {
         app.MapDelete("/products/{id}", async (Guid id, ISender sender) =>
         {
-            var command = new DeleteProductByIdCommand(id);
-            var result = await sender.Send(command);
+            var result = await sender.Send(new DeleteProductByIdCommand(id));
             var response = result.Adapt<DeleteProductCommandResponse>();
             return Results.Ok(response);
         })
