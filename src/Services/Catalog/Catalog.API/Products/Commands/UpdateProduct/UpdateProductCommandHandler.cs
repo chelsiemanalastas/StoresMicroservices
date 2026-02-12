@@ -24,7 +24,7 @@ internal class UpdateProductCommandHandler(
             throw new NotFoundException(nameof(Product), "Id", command.Id.ToString());
 
         product.Name = command.Name;
-        product.Category = command.Categories;
+        product.Categories = command.Categories;
         product.Description = command.Description;
         product.ImageUrl = command.ImageUrl;
         product.Price = command.Price;
