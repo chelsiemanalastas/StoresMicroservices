@@ -17,7 +17,7 @@ internal class GetProductByCategoryQueryHandler(
             .ToListAsync();
 
         if (!products.Any())
-            throw new NotFoundException(nameof(Product), "Category", query.Category);
+            throw new NotFoundException(nameof(Product), nameof(Product.Categories), query.Category);
 
         return new GetProductByCategoryQueryResult(products);
     }

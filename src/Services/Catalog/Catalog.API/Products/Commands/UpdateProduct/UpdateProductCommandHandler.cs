@@ -21,7 +21,7 @@ internal class UpdateProductCommandHandler(
         var product = await documentSession.LoadAsync<Product>(command.Id, cancellationToken);
 
         if (product is null)
-            throw new NotFoundException(nameof(Product), "Id", command.Id.ToString());
+            throw new NotFoundException(nameof(Product), nameof(Product.Id), command.Id.ToString());
 
         product.Name = command.Name;
         product.Categories = command.Categories;
