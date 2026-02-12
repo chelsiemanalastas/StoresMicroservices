@@ -17,7 +17,7 @@ internal class CreateProductCommandHandler(
         var product = new Product
         {
             Name = command.Name,
-            Category = command.Categories,
+            Categories = command.Categories,
             Description = command.Description,
             ImageUrl = command.ImageUrl,
             Price = command.Price,
