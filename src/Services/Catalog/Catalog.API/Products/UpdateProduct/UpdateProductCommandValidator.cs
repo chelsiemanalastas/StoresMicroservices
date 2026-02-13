@@ -1,8 +1,8 @@
-﻿namespace Catalog.API.Products.CreateProduct;
+﻿namespace Catalog.API.Products.UpdateProduct;
 
-public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
 {
-    public CreateProductCommandValidator()
+    public UpdateProductCommandValidator()
     {
         RuleFor(x => x.Name).ValidName();
         RuleFor(x => x.Categories).ValidCategories();

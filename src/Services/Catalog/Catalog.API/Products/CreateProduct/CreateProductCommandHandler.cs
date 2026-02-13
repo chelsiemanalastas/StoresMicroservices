@@ -1,4 +1,4 @@
-﻿using Catalog.API.Products.Validators;
+﻿using Catalog.API.Products.Shared;
 
 namespace Catalog.API.Products.CreateProduct;
 
