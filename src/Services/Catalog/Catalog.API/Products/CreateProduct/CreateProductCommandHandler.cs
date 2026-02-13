@@ -1,19 +1,23 @@
-﻿namespace Catalog.API.Products.Commands.CreateProduct;
+﻿using Catalog.API.Products.Shared;
+
+namespace Catalog.API.Products.CreateProduct;
 
 public record CreateProductCommand(
     string Name,
     List<string> Categories,
     string Description,
     string ImageUrl,
-    decimal Price) : ICommand<CreateProductCommandResult>;
+    decimal Price) : ICommand<CreateProductCommandResult>, IProductCommand;
 public record CreateProductCommandResult(Guid Id);
 
 internal class CreateProductCommandHandler(
-        IDocumentSession documentSession
+        IDocumentSession documentSession,
+        ILogger<CreateProductCommandHandler> logger
     ) : ICommandHandler<CreateProductCommand, CreateProductCommandResult>
 {
     public async Task<CreateProductCommandResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
+        logger.LogInformation("Handling CreateProductCommand.Handle with {@Command}", command);
         var product = new Product
         {
             Name = command.Name,
