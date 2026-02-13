@@ -1,6 +1,4 @@
-﻿using Catalog.API.Products.Queries.GetProducts;
-
-namespace Catalog.API.Products.GetProducts;
+﻿namespace Catalog.API.Products.GetProducts;
 
 public record GetProductsQueryResponse(IEnumerable<Product> Products);
 public class GetProductsQueryEndpoint : ICarterModule
