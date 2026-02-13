@@ -1,13 +1,11 @@
-﻿using Catalog.API.Products.Shared;
-
-namespace Catalog.API.Products.CreateProduct;
+﻿namespace Catalog.API.Products.CreateProduct;
 
 public record CreateProductCommand(
     string Name,
     List<string> Categories,
     string Description,
     string ImageUrl,
-    decimal Price) : ICommand<CreateProductCommandResult>, IProductCommand;
+    decimal Price) : ICommand<CreateProductCommandResult>;
 public record CreateProductCommandResult(Guid Id);
 
 internal class CreateProductCommandHandler(
