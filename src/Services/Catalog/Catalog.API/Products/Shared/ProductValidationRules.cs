@@ -2,6 +2,13 @@
 
 public static class ProductValidationRules
 {
+    public static IRuleBuilderOptions<T, Guid> ValidId<T>(this IRuleBuilder<T, Guid> ruleBuilder)
+    {
+        return ruleBuilder
+            .NotEmpty()
+            .WithMessage("Product Id is required.");
+    }
+
     public static IRuleBuilderOptions<T, string> ValidName<T>(this IRuleBuilder<T, string> ruleBuilder)
     {
         return ruleBuilder
