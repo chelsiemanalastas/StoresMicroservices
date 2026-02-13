@@ -1,4 +1,4 @@
-﻿namespace Catalog.API.Products.Queries.GetProductById;
+﻿namespace Catalog.API.Products.GetProductById;
 
 public record GetProductByIdQueryResponse(Product Product);
 public class GetProductByIdQueryEndpoint : ICarterModule

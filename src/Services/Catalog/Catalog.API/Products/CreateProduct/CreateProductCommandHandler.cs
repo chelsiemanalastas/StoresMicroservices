@@ -1,11 +1,13 @@
-﻿namespace Catalog.API.Products.Commands.CreateProduct;
+﻿using Catalog.API.Products.Validators;
+
+namespace Catalog.API.Products.CreateProduct;
 
 public record CreateProductCommand(
     string Name,
     List<string> Categories,
     string Description,
     string ImageUrl,
-    decimal Price) : ICommand<CreateProductCommandResult>;
+    decimal Price) : ICommand<CreateProductCommandResult>, IProductCommand;
 public record CreateProductCommandResult(Guid Id);
 
 internal class CreateProductCommandHandler(

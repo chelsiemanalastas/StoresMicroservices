@@ -1,4 +1,6 @@
-﻿namespace Catalog.API.Products.Commands.UpdateProduct;
+﻿using Catalog.API.Products.Validators;
+
+namespace Catalog.API.Products.UpdateProduct;
 
 public record UpdateProductCommand(
     Guid Id,
@@ -6,7 +8,7 @@ public record UpdateProductCommand(
     List<string> Categories,
     string Description,
     string ImageUrl,
-    decimal Price) : ICommand<UpdateProductCommandResult>;
+    decimal Price) : ICommand<UpdateProductCommandResult>, IProductCommand;
 public record UpdateProductCommandResult(bool IsSuccess);
 
 internal class UpdateProductCommandHandler(

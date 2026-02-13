@@ -1,4 +1,4 @@
-﻿namespace Catalog.API.Products.Commands.CreateProduct;
+﻿namespace Catalog.API.Products.CreateProduct;
 
 public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
 {

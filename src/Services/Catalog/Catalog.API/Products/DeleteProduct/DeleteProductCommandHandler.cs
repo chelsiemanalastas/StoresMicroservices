@@ -1,4 +1,4 @@
-﻿namespace Catalog.API.Products.Commands.DeleteProduct;
+﻿namespace Catalog.API.Products.DeleteProduct;
 
 public record DeleteProductByIdCommand(Guid Id) : ICommand<DeleteProductByIdCommandResult>;
 public record DeleteProductByIdCommandResult(bool IsSuccess);
