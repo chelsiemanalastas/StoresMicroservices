@@ -1,5 +1,3 @@
-using BuildingBlocks.Behaviors;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,9 +15,13 @@ services.AddMarten(options =>
 }).UseLightweightSessions();
 services.AddValidatorsFromAssembly(assembly);
 services.AddCarter();
+services.AddExceptionHandler<CustomExceptionHandler>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.MapCarter();
+
+app.UseExceptionHandler(options => { });
+
 app.Run();
