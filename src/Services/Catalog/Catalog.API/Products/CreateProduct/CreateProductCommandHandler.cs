@@ -9,13 +9,11 @@ public record CreateProductCommand(
 public record CreateProductCommandResult(Guid Id);
 
 internal class CreateProductCommandHandler(
-        IDocumentSession documentSession,
-        ILogger<CreateProductCommandHandler> logger
+        IDocumentSession documentSession
     ) : ICommandHandler<CreateProductCommand, CreateProductCommandResult>
 {
     public async Task<CreateProductCommandResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Handling CreateProductCommand.Handle with {@Command}", command);
         var product = new Product
         {
             Name = command.Name,

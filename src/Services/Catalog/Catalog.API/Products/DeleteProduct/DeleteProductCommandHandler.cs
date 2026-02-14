@@ -3,13 +3,11 @@
 public record DeleteProductByIdCommand(Guid Id) : ICommand<DeleteProductByIdCommandResult>;
 public record DeleteProductByIdCommandResult(bool IsSuccess);
 internal class DeleteProductCommandHandler(
-        IDocumentSession documentSession,
-        ILogger<DeleteProductCommandHandler> logger
+        IDocumentSession documentSession
     ) : ICommandHandler<DeleteProductByIdCommand, DeleteProductByIdCommandResult>
 {
     public async Task<DeleteProductByIdCommandResult> Handle(DeleteProductByIdCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Handling DeleteProductByIdCommand for Id: {Id}", request.Id);
         var product = await documentSession.LoadAsync<Product>(request.Id, cancellationToken);
 
         if (product is null)
