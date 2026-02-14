@@ -10,15 +10,12 @@ public record UpdateProductCommand(
 public record UpdateProductCommandResult(bool IsSuccess);
 
 internal class UpdateProductCommandHandler(
-        IDocumentSession documentSession,
-        ILogger<UpdateProductCommandHandler> logger
+        IDocumentSession documentSession
     ) : ICommandHandler<UpdateProductCommand, UpdateProductCommandResult>
 {
     public async Task<UpdateProductCommandResult> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Updating product with command {@Command}", command);
-
-        var product = await documentSession.LoadAsync<Product>(command.Id, cancellationToken);
+       var product = await documentSession.LoadAsync<Product>(command.Id, cancellationToken);
 
         if (product is null)
             throw new NotFoundException(nameof(Product), nameof(Product.Id), command.Id.ToString());
