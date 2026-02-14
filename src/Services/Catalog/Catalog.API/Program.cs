@@ -14,6 +14,10 @@ services.AddMarten(options =>
 {
     options.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
+
+if (builder.Environment.IsDevelopment())
+    services.InitializeMartenWith<CatalogInitialData>();
+
 services.AddValidatorsFromAssembly(assembly);
 services.AddCarter();
 services.AddExceptionHandler<CustomExceptionHandler>();
