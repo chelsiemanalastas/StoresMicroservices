@@ -18,7 +18,7 @@ public class StoreBasketCommandEndpoint : ICarterModule
         })
             .WithTags("Basket")
             .WithName("StoreBasket")
-            .Produces<GetBasketResponse>(StatusCodes.Status200OK)
+            .Produces<GetBasketResponse>(StatusCodes.Status201Created)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithSummary("Stores a user's basket")
             .WithDescription("Stores all items in the user's basket.");
