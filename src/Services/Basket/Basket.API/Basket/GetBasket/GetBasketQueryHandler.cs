@@ -6,6 +6,7 @@ public class GetBasketQueryHandler : IQueryHandler<GetBasketQuery, GetBasketResu
 {
     public async Task<GetBasketResult> Handle(GetBasketQuery query, CancellationToken cancellationToken)
     {
+        // TODO: get basket database implementation
         throw new NotImplementedException();
     }
 }

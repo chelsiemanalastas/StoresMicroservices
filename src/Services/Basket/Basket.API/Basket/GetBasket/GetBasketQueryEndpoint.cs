@@ -18,6 +18,6 @@ public class GetBasketQueryEndpoint : ICarterModule
             .Produces<GetBasketResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithSummary("Gets a user's basket")
-            .WithDescription("Gets tall items in the user's basket.");
+            .WithDescription("Gets all items in the user's basket.");
     }
 }
