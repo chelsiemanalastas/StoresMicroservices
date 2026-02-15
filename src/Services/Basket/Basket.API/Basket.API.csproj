@@ -13,10 +13,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Basket\GetBasket\" />
-    <Folder Include="Basket\DeleteBasket\" />
-    <Folder Include="Basket\StoreBasket\" />
-  </ItemGroup>
-
 </Project>
