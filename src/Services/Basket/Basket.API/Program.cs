@@ -20,7 +20,13 @@ services.AddMarten(options =>
 }).UseLightweightSessions();
 
 services.AddScoped<IBasketRepository, BasketRepository>();
+services.Decorate<IBasketRepository, CachedBasketRepository>();
 services.AddExceptionHandler<CustomExceptionHandler>();
+
+services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis")!;
+});
 
 var app = builder.Build();
 
