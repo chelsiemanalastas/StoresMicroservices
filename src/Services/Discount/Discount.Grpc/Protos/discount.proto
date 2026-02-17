@@ -37,5 +37,5 @@ message DeleteDiscountRequest {
 }
 
 message DeleteDiscountResponse {
-    CouponModel success = 1;
+    bool success = 1;
 }
