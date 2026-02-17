@@ -36,6 +36,36 @@ namespace Discount.Grpc.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Coupons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 250,
+                            Description = "MacBook Special Discount",
+                            ProductName = "MacBook Pro M2"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Amount = 80,
+                            Description = "Headphones Limited Offer",
+                            ProductName = "Sony WH-1000XM5"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Amount = 200,
+                            Description = "Laptop Seasonal Discount",
+                            ProductName = "Dell XPS 13"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Amount = 120,
+                            Description = "Tablet Promo Discount",
+                            ProductName = "iPad Air"
+                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,8 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Discount.Grpc.Migrations
 {
     /// <inheritdoc />
@@ -23,6 +25,17 @@ namespace Discount.Grpc.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Coupons", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Coupons",
+                columns: new[] { "Id", "Amount", "Description", "ProductName" },
+                values: new object[,]
+                {
+                    { 1, 250, "MacBook Special Discount", "MacBook Pro M2" },
+                    { 2, 80, "Headphones Limited Offer", "Sony WH-1000XM5" },
+                    { 3, 200, "Laptop Seasonal Discount", "Dell XPS 13" },
+                    { 4, 120, "Tablet Promo Discount", "iPad Air" }
                 });
         }
 
