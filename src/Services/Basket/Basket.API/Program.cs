@@ -1,15 +1,16 @@
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 var services = builder.Services;
 var assembly = typeof(Program).Assembly;
 var postgresConnString = builder.Configuration.GetConnectionString("Database")!;
 var redisConnString = builder.Configuration.GetConnectionString("Redis")!;
 
+// Application services
 services.AddCarter();
 services.AddMediatR(cfg =>
 {
@@ -17,6 +18,8 @@ services.AddMediatR(cfg =>
     cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
     cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
+
+// Data services
 services.AddMarten(options =>
 {
     options.Connection(postgresConnString);
@@ -25,17 +28,41 @@ services.AddMarten(options =>
 
 services.AddScoped<IBasketRepository, BasketRepository>();
 services.Decorate<IBasketRepository, CachedBasketRepository>();
-services.AddExceptionHandler<CustomExceptionHandler>();
-
-services.AddHealthChecks()
-    .AddNpgSql(postgresConnString)
-    .AddRedis(redisConnString);
 
 services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = redisConnString;
 });
 
+// Grpc services
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+    {
+        options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+    })
+    .ConfigurePrimaryHttpMessageHandler(() =>
+        new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+        });
+}
+else
+{
+    builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+    {
+        options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+    });
+}
+
+
+
+// Cross-cutting services
+services.AddExceptionHandler<CustomExceptionHandler>();
+services.AddHealthChecks()
+    .AddNpgSql(postgresConnString)
+    .AddRedis(redisConnString);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
