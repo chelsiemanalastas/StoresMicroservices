@@ -35,10 +35,28 @@ services.AddStackExchangeRedisCache(options =>
 });
 
 // Grpc services
-services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+if (builder.Environment.IsDevelopment())
 {
-    options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
-});
+    builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+    {
+        options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+    })
+    .ConfigurePrimaryHttpMessageHandler(() =>
+        new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+        });
+}
+else
+{
+    builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+    {
+        options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+    });
+}
+
+
 
 // Cross-cutting services
 services.AddExceptionHandler<CustomExceptionHandler>();
