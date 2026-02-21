@@ -10,7 +10,11 @@ public static class DependencyInjection
     {
         var connString = configuration.GetConnectionString("Database");
 
-        services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connString));
+        services.AddDbContext<ApplicationDbContext>(options =>
+        {
+            options.AddInterceptors(new AuditableEntityInterceptor());
+            options.UseSqlServer(connString);
+        });
 
         return services;
     }
