@@ -3,12 +3,12 @@
 public class Product : Entity<ProductId>
 {
     public string Name { get; private set; } = default!;
-    public string Price { get; private set; } = default!;
+    public decimal Price { get; private set; } = default!;
 
-    public static Product Create(ProductId id, string name, string price)
+    public static Product Create(ProductId id, string name, decimal price)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
-        ArgumentException.ThrowIfNullOrWhiteSpace(price);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
         var product = new Product
         {
             Id = id,
