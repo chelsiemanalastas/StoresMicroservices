@@ -92,7 +92,7 @@ internal class InitialData
             var order1 = Order.Create(
                 OrderId.Of(Guid.NewGuid()), 
                 CustomerId.Of(new Guid("3f1c2a8e-7b4e-4b8b-9c6d-1a2f3e4d5c01")), 
-                OrderName.Of("Order 1"),
+                OrderName.Of("Order 1_12345678909876543"),
                 shippingAddress: address1,
                 billingAddress: address1,
                 payment1,
@@ -103,7 +103,7 @@ internal class InitialData
             var order2 = Order.Create(
                 OrderId.Of(Guid.NewGuid()),
                 CustomerId.Of(new Guid("7a9d5c3b-2e8f-4f1a-8b7c-2d3e4f5a6b02")),
-                OrderName.Of("Order 2"),
+                OrderName.Of("Order 2_12345678909876543"),
                 shippingAddress: address2,
                 billingAddress: address2,
                 payment2,
