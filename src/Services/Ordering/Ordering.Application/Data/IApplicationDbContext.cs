@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Ordering.Application.Data;
 
-namespace Ordering.Application.Data;
-
-internal interface IApplicationDbContext
+public interface IApplicationDbContext
 {
 }
