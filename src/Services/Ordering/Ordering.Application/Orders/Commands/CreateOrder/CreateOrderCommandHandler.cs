@@ -1,5 +1,11 @@
-﻿namespace Ordering.Application.Orders.Commands.CreateOrder;
+﻿using BuildingBlocks.CQRS;
 
-public class CreateOrderCommandHandler
+namespace Ordering.Application.Orders.Commands.CreateOrder;
+
+public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, CreateOrderResult>
 {
+    public async Task<CreateOrderResult> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 }
