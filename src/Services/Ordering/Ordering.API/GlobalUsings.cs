@@ -1,5 +1,4 @@
-﻿namespace Ordering.API;
-
-public class GlobalUsings
-{
-}
+﻿global using Carter;
+global using Mapster;
+global using MediatR;
+global using Ordering.Application.Dtos;
