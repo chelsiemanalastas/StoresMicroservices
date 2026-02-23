@@ -2,12 +2,12 @@
 
 namespace Ordering.Application.Orders.Queries.GetOrderByName;
 
-public class GetOrderByNameQueryHandler(
+public class GetOrdersByNameQueryHandler(
         IApplicationDbContext dbContext
-    ) : IQueryHandler<GetOrderByNameQuery, GetOrderByNameResult>
+    ) : IQueryHandler<GetOrdersByNameQuery, GetOrdersByNameResult>
 
 {
-    public async Task<GetOrderByNameResult> Handle(GetOrderByNameQuery request, CancellationToken cancellationToken)
+    public async Task<GetOrdersByNameResult> Handle(GetOrdersByNameQuery request, CancellationToken cancellationToken)
     {
         var orders = await dbContext.Orders
             .Include(o => o.OrderItems)
@@ -16,7 +16,7 @@ public class GetOrderByNameQueryHandler(
             .OrderBy(o => o.OrderName)
             .ToListAsync(cancellationToken);
 
-        return new GetOrderByNameResult(orders.ToOrderDtoList());
+        return new GetOrdersByNameResult(orders.ToOrderDtoList());
     }
 
 }
