@@ -19,7 +19,7 @@ public class CreateOrder : ICarterModule
         .WithName("CreateOrder")
         .Produces(StatusCodes.Status201Created)
         .ProducesProblem(StatusCodes.Status400BadRequest)
-        .WithSummary("Creates an order")
-        .WithDescription("Creates an order with a list of items");
+        .WithSummary("Updates an order")
+        .WithDescription("Updates an order with the list of order items");
     }
 }
