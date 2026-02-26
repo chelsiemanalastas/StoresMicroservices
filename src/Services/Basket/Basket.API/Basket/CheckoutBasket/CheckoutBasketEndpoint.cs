@@ -19,10 +19,11 @@ public class CheckoutBasketEndpoints : ICarterModule
 
             return Results.Ok(response);
         })
+        .WithTags("Basket")
         .WithName("CheckoutBasket")
         .Produces<CheckoutBasketResponse>(StatusCodes.Status201Created)
         .ProducesProblem(StatusCodes.Status400BadRequest)
-        .WithSummary("Checkout Basket")
-        .WithDescription("Checkout Basket");
+        .WithSummary("Checkout basket")
+        .WithDescription("Checkout basket to proceed to payment");
     }
 }
