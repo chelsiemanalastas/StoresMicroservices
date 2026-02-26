@@ -13,11 +13,11 @@ public class GetBasketQueryEndpoint : ICarterModule
             var response = result.Adapt<GetBasketResponse>();
             return Results.Ok(response);
         })
-            .WithTags("Basket")
-            .WithName("GetBasket")
-            .Produces<GetBasketResponse>(StatusCodes.Status200OK)
-            .ProducesProblem(StatusCodes.Status404NotFound)
-            .WithSummary("Gets a user's basket")
-            .WithDescription("Gets all items in the user's basket.");
+        .WithTags("Basket")
+        .WithName("GetBasket")
+        .Produces<GetBasketResponse>(StatusCodes.Status200OK)
+        .ProducesProblem(StatusCodes.Status404NotFound)
+        .WithSummary("Gets a user's basket")
+        .WithDescription("Gets all items in the user's basket.");
     }
 }

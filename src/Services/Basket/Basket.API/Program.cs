@@ -1,3 +1,4 @@
+using BuildingBlocks.Messaging.MassTransit;
 using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -56,6 +57,8 @@ else
     });
 }
 
+// Async communication services
+services.AddMessageBroker(builder.Configuration);
 
 
 // Cross-cutting services

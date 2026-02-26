@@ -12,11 +12,11 @@ public class DeleteBasketCommandEndpoint : ICarterModule
             var response = result.Adapt<DeleteBasketResponse>();
             return Results.Ok(response);
         })
-            .WithTags("Basket")
-            .WithName("DeleteBasket")
-            .Produces(StatusCodes.Status204NoContent)
-            .ProducesProblem(StatusCodes.Status404NotFound)
-            .WithSummary("Deletes a user's basket")
-            .WithDescription("Deletes the user's basket and all items in it.");
+        .WithTags("Basket")
+        .WithName("DeleteBasket")
+        .Produces(StatusCodes.Status204NoContent)
+        .ProducesProblem(StatusCodes.Status404NotFound)
+        .WithSummary("Deletes a user's basket")
+        .WithDescription("Deletes the user's basket and all items in it.");
     }
 }
