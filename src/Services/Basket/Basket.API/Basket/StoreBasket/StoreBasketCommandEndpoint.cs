@@ -16,11 +16,11 @@ public class StoreBasketCommandEndpoint : ICarterModule
             var response = result.Adapt<StoreBasketResponse>();
             return Results.Created($"/basket/{response.Username}", response);
         })
-            .WithTags("Basket")
-            .WithName("StoreBasket")
-            .Produces<GetBasketResponse>(StatusCodes.Status201Created)
-            .ProducesProblem(StatusCodes.Status404NotFound)
-            .WithSummary("Stores a user's basket")
-            .WithDescription("Stores all items in the user's basket.");
+        .WithTags("Basket")
+        .WithName("StoreBasket")
+        .Produces<GetBasketResponse>(StatusCodes.Status201Created)
+        .ProducesProblem(StatusCodes.Status404NotFound)
+        .WithSummary("Stores a user's basket")
+        .WithDescription("Stores all items in the user's basket.");
     }
 }
