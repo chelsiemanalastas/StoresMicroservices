@@ -44,3 +44,8 @@ public enum OrderStatus
     Canceled = 4
 }
 
+
+// wrapper classes
+public record GetOrdersResponse(PaginatedResult<OrderModel> Orders);
+public record GetOrderByNameResponse(IEnumerable<OrderModel> Orders);
+public record GetOrderByCustomerResponse(IEnumerable<OrderModel> Orders);
