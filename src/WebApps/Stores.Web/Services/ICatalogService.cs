@@ -1,6 +1,4 @@
-﻿using Stores.Web.Models.Catalog;
-
-namespace Stores.Web.Services;
+﻿namespace Stores.Web.Services;
 
 public interface ICatalogService
 {
